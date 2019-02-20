@@ -1,12 +1,20 @@
 console.log("Index.js has loaded");
-/*var data = fetch('http://localhost:3000/');
 
-console.log("This is the data: "+ data);*/
+window.addEventListener("load",init); //When page has loaded, call init function
 
-fetch('http://localhost:3000')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(myJson) {
-    console.log(JSON.stringify(myJson));
-  });
+function init(){
+  getNewArticle() //Load the first article
+  var btn1 = document.querySelector("#btn1");
+  btn1.addEventListener("click", getNewArticle);
+}
+
+function getNewArticle(){
+  console.log("Button has been pressed");
+  fetch('http://localhost:3000')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      console.log(JSON.stringify(myJson));
+    });
+}
