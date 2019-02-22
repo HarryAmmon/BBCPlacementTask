@@ -15,7 +15,13 @@ articleNames.forEach(function(item){ // For each filename in array
 })
 
 http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write(JSON.stringify(articles[0]));
-  res.end();
+  res.writeHead(200, {'Content-Type': 'text/plain'});                           // Start write head
+  var articleToSend = getRandomInt(articles.length,1);                          //Select random article to display
+  res.write(JSON.stringify(articles[articleToSend]));                           // Send random article
+  articles.splice(articleToSend,1);                                             // Remove sent item from array
+  res.end();                                                                    // End write
 }).listen(3000);
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
