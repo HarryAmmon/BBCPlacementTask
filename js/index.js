@@ -1,10 +1,10 @@
 console.log("Index.js has loaded");
 
 window.addEventListener("load",init); //When page has loaded, call init function
-
+var target;
 function init(){
   //getJSON() //Load the first article
-  var target = document.querySelector("#target");                               // Get banner at top of site
+  target = document.querySelector("#target");                                   // Get banner at top of site
   var btn1 = document.querySelector("#btn1");                                   // Get 'Next Article' button
   btn1.addEventListener("click", getJSON);                                      // click event listener that calls functin getNewArticle when btn is clicked
 }
@@ -24,7 +24,17 @@ function getJSON(){
   * This function creates the article element and adds the title
   */
 function renderArticle(myJson){
+  try{
+    var targetNode = document.querySelector("#target");
+    while (targetNode.firstChild) {
+      targetNode.removeChild(targetNode.firstChild);
+    }
+}
+catch(NotFoundError){
+  console.log("NotFoundError")
+}
   var newArticle = document.createElement("article");                           // Create new article element
+  newArticle.id = 'article';
   var articleHeader = document.createElement("header");                         // Create new header element
   var articleTitle = document.createElement("h2");                              // Create new h2 element
 

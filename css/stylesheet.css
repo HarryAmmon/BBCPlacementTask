@@ -1,0 +1,374 @@
+/*base styles------------------------------------------------------------------- */
+body {
+    background-size: 100%;
+    background-color: #FFFFFF; 
+    font-family: Mada, Verdana, sans-serif, serif;
+    
+    font-size: 100%;
+    line-height: 1rem;
+	max-width: 1000%;
+}
+/*headings------------------------------------------------------------------- */
+h1  {
+    color: #000;
+    font-size: 1rem;
+    line-height: 1;
+    font-family: "Fjalla One";
+    text-align: center;
+    line-height: 1;
+
+}
+h2  {
+    font-size: 2.5rem;
+	line-height: 1;
+	/*background-color: red;*/
+    margin: 1rem 0rem 1rem 0.5rem;
+    text-align: center;
+    
+	
+}
+h3 	{
+    font-size: 1.8rem;
+    line-height: 1;
+}
+h4	{
+    font-size: 1.5rem;
+    line-height: 1;
+    margin: 0rem 0rem 0rem 0rem;
+    padding: .5rem 0rem .5rem 0rem;
+}
+h5	{
+}
+h6	{
+}
+/*Paragraph--------------------------------------------------------------------*/
+p	{
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+}
+p.dropcap:first-letter{
+    float: left;
+    font-size: 4em;
+    line-height: 0.2;
+    margin: 10px 5px 4px 0; /* This goes in order Top, Right, Bottom, Left or clockwise*/
+    /*top: px;*/
+}
+
+small	{
+}
+blockquote	{
+}
+table{
+    table-layout: fixed;
+    max-width: 30rem;
+}
+th{ 
+}
+td{
+}
+/*anchors--------------------------------------------------------------------- */
+a:link	{
+}
+a:visited {
+}
+a:hover {
+}
+a:active {
+    
+}
+
+header{
+	max-width: 100%;
+}
+#aboutme	{
+    background: #e1f7D5;
+}
+
+#week1   {
+    background: #FFBDBD;
+}
+#week2{
+    background: #c9c9ff;
+}
+#week3{
+    background: #f1cbff;
+}
+#week4{
+    background: #f4ccd4;
+}
+#week5{
+    background: #fff37c;
+}
+#week6{
+    background: #e1f7d5;
+}
+#week7{
+    background: #FFBDBD;
+}
+
+#name{
+    padding: 1rem 0.5rem 1rem 1rem;
+
+}
+/*layout styles----------------------------------------------------------------*/
+#wrapper {
+    max-width: 100%;
+    margin: 0rem 0rem 0rem 0rem;
+    padding: 1rem 1rem 1rem 1rem;
+   /* background-color: #FFF;*/
+}
+article{
+    border: solid;
+    margin: 0.5rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;	
+}
+footer {
+}
+img	{
+    width: 100%;
+    border: 1px;
+    border-color: black;
+}
+#HTML5Logo{
+    width: 10%;
+    height: 10%;
+}
+/*lists---------------------------------------------------------------------- */
+.refrence li  {
+    margin: 0rem 0rem 0rem 0rem;    
+    list-style-type: circle;
+    padding: 0.2rem 0rem 0.1rem 0rem;
+}
+.nav { 
+    list-style-type: none;
+    margin: 0rem;
+    padding: 0rem;
+    background-color: #353B40;
+    
+}
+
+.nav li	{
+    display: block;
+    font-size: 1.5rem;    
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 0px;
+    border-right: 0px;
+    display: block;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.nav a{
+    text-decoration: none;
+    display: block;
+    color: #FFF;   
+    padding: 1rem 0.5rem 1rem 0.5rem;    
+}
+
+
+.nav a:hover{
+    color: #62AEFF;
+}
+.nav a:active{
+}
+.nav img{
+    height: 1rem;
+    width: 1rem;
+    float: right;
+    padding-left: 2rem;
+    margin-bottom: 0rem;
+} 
+
+
+
+.fltlt {
+	float: left;
+	}
+.clear {
+	clear: both;
+	}
+
+label{
+    display: block;
+}
+
+input{
+    display:block;
+}
+
+input[type=text]{
+    width: 90%;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+input[type=text]:focus {
+    border: 3px solid #555;
+    border-radius: 10px;
+}
+textarea {
+    width: 100%;
+    height: 14rem;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    resize: none;
+}
+
+input[type=submit]{
+    background-color: #64E569;
+    width: 8rem;
+    height: 4rem;
+    border-radius: 10px;
+    margin: 1rem 8rem 2rem 8rem;
+    text-align: center;
+    color: #FFF;
+    font-size: 2rem;
+    text-decoration: none;
+    
+}
+.socialMedia {
+    display: inline-block;
+    width: 30%;
+    margin-left: 3rem;
+    text-align: center;
+}
+.socialMedia img{
+    width: 4rem;
+    padding: .5rem .5rem .5rem .5rem;
+    border-radius: 30%;
+}
+
+#top{
+    margin: .5rem .5rem .5rem .5rem ;
+    display: inline-block;
+}
+footer{
+    margin:1rem;
+}
+
+#btn {
+    display: flex;
+    justify-content: center;
+}
+
+.guide {
+    position: relative;
+    text-align: center;
+}
+
+#title {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFF;
+}
+
+
+@media (min-width: 50rem){/*----This is for desktop version of site------*/
+    body, html{
+        height: 100%;
+    }
+    main {
+        display: inline-block;
+        width: 60%;
+        margin-left: 0.2rem;
+    }
+     aside{
+        width: 30%;
+        padding: 1rem 1rem 1rem 1rem;
+        margin-left: 1rem;   
+        
+    }
+   
+    .guidePage1 {
+        width: 38%;
+        margin: 0rem 0rem 0rem 0rem;
+        
+    }
+    
+    .guidePage2 {
+        width: 56%;
+        float: right;
+    }
+    
+    .contactPage{
+        background-image: url(../images/contactPage.jpeg);/*Thanks to Kevin Ku for this image. Image taken with permission from https://www.pexels.com/photo/coding-computer-data-depth-of-field-577585/*/
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    
+   
+    .floatLeft{
+        float: left;
+    }
+    
+    .floatRight{
+        float: right;
+    }
+    
+    .nav {
+        max-width: 100%;
+        padding: 0rem 0rem 0rem 0rem;
+    }
+         
+    .nav ul{
+        text-align: center;
+        padding: 0rem 0rem 0rem 0rem;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        
+    }
+    
+    .nav li {
+        border-bottom: none;
+        border-top: none;
+        border-left: 1px solid white;
+        display: inline-block;
+        padding: 1rem 0rem 1rem 0rem;
+    }
+    
+    .nav a{
+        display: inline;
+     }
+
+    .clear {
+        clear: both;
+    }
+    form{
+        padding-left: 2rem;    
+    }
+    
+
+    .contactPage{
+        color: #FFF;
+    }
+   
+    #pavi {
+        overflow: hidden;
+        max-height: 200px;
+            
+    }
+    .column1 {
+        height: auto;
+        width: 49%;
+        float: left;
+        
+    }
+    .column2 {
+        height: auto;
+        width: 49%;
+        float: right;
+    }
+    
+}
