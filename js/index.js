@@ -21,11 +21,22 @@ function getJSON() {
     mode: 'cors',                                                               // Mode = cors
   })
     .then(function(response) {                                                  // Promise that returns JSON file.
+      console.log(response.status);
+      var btn = document.querySelector("#btn1");
+      btn.textContent = "Next Article";
       return response.json();
     })
     .then(function(article) {                                                   // Promise that passes JSON file to
       renderArticle(article);                                                   // method render article.
-    }).catch(error => console.error('Error: ',error));                          // Catches error and logs it in console
+    }).catch(function(error){       // Catches error and logs it in console
+      var h2 = document.createElement("h2");   // Create element h2
+      var p = document.createElement("p"); // Create element p
+      h2.textContent = "Could not connect to server";  // Add text content
+      p.textContent = "Please try again later"; // Add text content
+      target.appendChild(h2);// Append new elements to target
+      target.appendChild(p);// Append new elements to target
+
+    });
 }
                                                                             // under errors.
 /**
@@ -39,6 +50,18 @@ function sendJSON(data){
     body: data,                                                                 // body = JSON string to be sent
     mode: 'cors',                                                               // mode = corse
   }).then(function(response){                                                   // Promise that returns servers response
+    console.log("POST response status: "+response.status);
+    if(response.status === 200){
+      clearScreen();
+      var h2 = document.createElement("h2");
+      h2.textContent = "Thank you, your ranking has been saved";
+      target.appendChild(h2);
+      var btn = document.querySelector("#btn1");
+      btn.textContent = "Back to articles";
+      btn.removeEventListener("click",submitRanking);                                     // Remove previous event
+      loadedArticles = [];
+      btn.addEventListener("click",getJSON);                                  // Add new event listener
+    }
     return console.log(response);                                               // Log response to console
   }).catch(error => console.error('Error: ',error));                            // Catches error
 }
@@ -94,7 +117,7 @@ function storeArticle(title) {
      tempObj.rank = document.getElementById(optionIDs[i]).value;            // Add its rank to object
      rankings.push(tempObj);                                                    // Add object to
    }
-   
+
    sendJSON(JSON.stringify(rankings));                                          // Call function sendJSON with JSON object as a string
  }
 

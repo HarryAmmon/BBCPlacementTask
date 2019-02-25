@@ -20,10 +20,8 @@ for (var i = 0; i < articleNamesLength; i++) { // For the number of articles tha
 }
 
 http.createServer(function(req, res) { // create server using http library
-  console.log("This is req: " + req.method);
-  console.log("This is res: " + res.method);
   if (req.method === "GET") { // If request is GET
-    console.log("GET")
+    console.log("GET Request")
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Request-Method", "*");
     res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
@@ -36,7 +34,7 @@ http.createServer(function(req, res) { // create server using http library
     res.write(JSON.stringify(articles[calcArticleToSend()])); // Send random article as a string
     res.end(); // End of response
   } else if (req.method === "POST") { // If request is POST
-    console.log("POST");
+    console.log("POST Request");
     var body = " ";
     req.on("data", function(data) {                                             // Once recieved data from client
       body += data // Add data to body variable
