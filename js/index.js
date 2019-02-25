@@ -94,6 +94,7 @@ function storeArticle(title) {
      tempObj.rank = document.getElementById(optionIDs[i]).value;            // Add its rank to object
      rankings.push(tempObj);                                                    // Add object to
    }
+   
    sendJSON(JSON.stringify(rankings));                                          // Call function sendJSON with JSON object as a string
  }
 
