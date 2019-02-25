@@ -90,8 +90,8 @@ function storeArticle(title) {
 
    for(var i = 0;i<loadedArticles.length;i++){                                  // For every loaded article
      var tempObj = {};                                                            // Create new object rankings
-     tempObj.title = loadedArticles;                                            // Add its title to object
-     tempObj.rank = 2;//document.getElementById(optionIDs[i]).value;            // Add its rank to object
+     tempObj.title = loadedArticles[i];                                            // Add its title to object
+     tempObj.rank = document.getElementById(optionIDs[i]).value;            // Add its rank to object
      rankings.push(tempObj);                                                    // Add object to
    }
    sendJSON(JSON.stringify(rankings));                                          // Call function sendJSON with JSON object as a string
