@@ -11,15 +11,27 @@ function init() {
 }
 
 function getJSON() {
-  fetch('http://localhost:3000') // Send GET request to Server
+  fetch('http://localhost:3000',{
+    method: 'GET',
+    mode: 'cors',
+    //credentials: 'same-origin',
+  }) // Send GET request to Server
     .then(function(response) { // Promise
       return response.json();
     })
     ////
     .then(function(myJson) { // Promise
       renderArticle(myJson);
-      //storeArticle(myJson.title);
-    });
+    }).catch(error => console.error('Error: ',error));
+}
+
+function sendJSON(data){
+  fetch('http://localhost:3000',{
+    method: 'POST',
+    body: data,
+  }).then(function(response){
+    return console.log(response);
+  }).catch(error => console.error('Error: ',error));
 }
 
 /*
@@ -33,17 +45,23 @@ function storeArticle(title) {
 /*
  *
  */
+ var optionIDs = [];
  function loadArticleRanker(){
    // TODO: create form that allows user to rank each article
   var target = document.querySelector("#target");
   var h2 = document.createElement("h2");
   h2.textContent = "Rank each article where 1 was your favourite article and 5 was your least favourite";
   target.appendChild(h2);
+  var j = 1;
+
   loadedArticles.forEach(function(article) {
     var p = document.createElement("p");
     p.textContent = article;
     target.appendChild(p);
     var select = document.createElement("select");
+    select.id = "article"+j;
+    optionIDs.push(select.id);
+    j++;
     for(var i = 1;i <= loadedArticles.length;i++){
       var option = document.createElement("option");
       option.value = i;
@@ -52,7 +70,7 @@ function storeArticle(title) {
     }
     target.appendChild(select);
   var btn = document.querySelector("#btn1");
-  btn.textContent = "Submit Ranking"
+  btn.textContent = "Submit Ranking";
   btn.removeEventListener("click",getJSON);
   btn.addEventListener("click",submitRanking);
   });
@@ -61,7 +79,16 @@ function storeArticle(title) {
  * Creates JSON file to send to server containing file title and rank
  */
  function submitRanking(){
+   var rankings= [];
+   var tempObj = {};                                                             // Create new object rankings
+   for(var i = 0;i<loadedArticles.length;i++){
+     tempObj.title = loadedArticles;
+     tempObj.rank = 2;//document.getElementById(optionIDs[i]).value;
+     rankings.push(tempObj);
+   }
+   sendJSON(JSON.stringify(rankings));
    console.log("Thing has been done");
+   console.log(rankings);
  }
 
 /*
