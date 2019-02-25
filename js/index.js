@@ -57,29 +57,29 @@ function storeArticle(title) {
  var optionIDs = [];
  function loadArticleRanker(){
   var target = document.querySelector("#target");
-  var h2 = document.createElement("h2");
-  h2.textContent = "Rank each article where 1 was your favourite article and 5 was your least favourite";
-  target.appendChild(h2);
-  var j = 1;
+  var h2 = document.createElement("h2");                                        // Create element
+  h2.textContent = "Rank each article where 1 was your favourite article and 5 was your least favourite"; // Add text
+  target.appendChild(h2);                                                       // Append to target
+  var j = 1;                                                                    // Counter
   loadedArticles.forEach(function(article) {
-    var p = document.createElement("p");
+    var p = document.createElement("p");                                        // Create element paragraph
     p.textContent = article;
     target.appendChild(p);
-    var select = document.createElement("select");
+    var select = document.createElement("select");                              // Create element select
     select.id = "article"+j;
     optionIDs.push(select.id);
-    j++;
+    j++;                                                                        // Increment counter
     for(var i = 1;i <= loadedArticles.length;i++){
-      var option = document.createElement("option");
-      option.value = i;
-      option.textContent = i;
-      select.appendChild(option);
+      var option = document.createElement("option");                            // Create element option
+      option.value = i;                                                         // Add value
+      option.textContent = i;                                                   // Add text
+      select.appendChild(option);                                               // Append element to previous select
     }
-    target.appendChild(select);
-  var btn = document.querySelector("#btn1");
-  btn.textContent = "Submit Ranking";
-  btn.removeEventListener("click",getJSON);
-  btn.addEventListener("click",submitRanking);
+    target.appendChild(select);                                                 // Apppend select to target element
+  var btn = document.querySelector("#btn1");                                    // Get button
+  btn.textContent = "Submit Ranking";                                           // Change text on button
+  btn.removeEventListener("click",getJSON);                                     // Remove previous event listener
+  btn.addEventListener("click",submitRanking);                                  // Add new event listener
   });
  }
 /*
@@ -87,13 +87,14 @@ function storeArticle(title) {
  */
  function submitRanking(){
    var rankings= [];
-   var tempObj = {};                                                            // Create new object rankings
+
    for(var i = 0;i<loadedArticles.length;i++){                                  // For every loaded article
+     var tempObj = {};                                                            // Create new object rankings
      tempObj.title = loadedArticles;                                            // Add its title to object
      tempObj.rank = 2;//document.getElementById(optionIDs[i]).value;            // Add its rank to object
-     rankings.push(tempObj);                                                    // Add object to 
+     rankings.push(tempObj);                                                    // Add object to
    }
-   sendJSON(JSON.stringify(rankings));
+   sendJSON(JSON.stringify(rankings));                                          // Call function sendJSON with JSON object as a string
  }
 
 /*
@@ -112,9 +113,8 @@ function renderArticle(article) {
     var articleHeader = document.createElement("header");                       // Create new header element
     var articleTitle = document.createElement("h2");                            // Create new h2 element
 
-    articleTitle.textContent = myJson.title;                                    // Get article title from JSON and set add text to element
+    articleTitle.textContent = article.title;                                    // Get article title from JSON and set add text to element
     storeArticle(articleTitle.textContent);                                     // Stores the article title in an array
-    console.log(loadedArticles.length);
 
     articleHeader.appendChild(articleTitle);                                    // Append h2 element to header
     newArticle.appendChild(articleHeader);                                      // Append header element to article
@@ -126,12 +126,12 @@ function renderArticle(article) {
           articleHeader.appendChild(heading);                                   // Append h3 element to header
           break;                                                                // Break from the switch statement
         case 'paragraph':
-          var p = document.createElement("p");
+          var p = document.createElement("p");                                  // Create element paragraph
           p.textContent = item.model.text;
           newArticle.appendChild(p);                                            // Append new element to the article
           break;                                                                // Break from the switch statement
         case 'image':
-          var image = document.createElement("img");
+          var image = document.createElement("img");                            // Create element image
           image.src = item.model.url;
           image.altText = item.model.altText;
           image.height = item.model.height;
