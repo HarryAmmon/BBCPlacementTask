@@ -7,6 +7,7 @@ var articleToSend = 0;
 
 fs.readdirSync(data).forEach(file => { // Read file names in directory data
   articleNames.push(file); // and store them in an array
+  console.log(file);
 });
 
 var articleNamesLength = articleNames.length;
@@ -39,7 +40,6 @@ http.createServer(function(req, res) { // create server using http library
     var body = " ";
     req.on("data", function(data) {                                             // Once recieved data from client
       body += data // Add data to body variable
-      console.log("Partial body: " + body); // Display recieved string in console
     })
     req.on("end", function() {
       console.log("Body: " + body);
@@ -51,12 +51,18 @@ http.createServer(function(req, res) { // create server using http library
         'Content-Type': 'text/plain'  // Send 200 status message
       });
       res.end("post received"); // End of response
+      saveData(body);
     })
   }
 }).listen(3000); // Serving is listening on port 3000
 
 console.log("Server listening on port 3000");
 
+function saveData(JSONstring){
+  fs.writeFile('./received/rankings.json',JSONstring,'UTF-8',function(){
+    console.log("Recieved data written to file");
+  });
+}
 /**
  * Returns random int between max and 0
  * @param int largest number
